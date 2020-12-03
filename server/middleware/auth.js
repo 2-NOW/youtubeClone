@@ -8,7 +8,7 @@ let auth = (req, res, next) => {
     if (!user)
       return res.json({
         isAuth: false,
-        error: true
+        error: true,
       });
 
     req.token = token;
