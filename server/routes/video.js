@@ -47,4 +47,8 @@ router.post('/uploadfiles', (req, res) => {
   });
 });
 
+router.post('/thumbnail', (req, res) => {
+  // thumbnail 생성하
+});
+
 module.exports = router;
