@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'antd';
+import { SmileOutlined } from '@ant-design/icons';
 
 function Footer() {
   return (
@@ -15,7 +15,7 @@ function Footer() {
     >
       <p>
         {' '}
-        Happy Coding <Icon type="smile" />
+        Happy Coding <SmileOutlined type="smile" />
       </p>
     </div>
   );
