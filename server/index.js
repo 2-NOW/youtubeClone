@@ -37,6 +37,7 @@ app.use(cookieParser());
 
 // 처음 client에서 request 받은게 이쪽으로 옴.
 // 여기서 routes로 보내줌
+// routes에서 router 만들 때 api에 /api/video 안붙여도 됨
 app.use('/api/users', require('./routes/users'));
 app.use('/api/video', require('./routes/video'));
 

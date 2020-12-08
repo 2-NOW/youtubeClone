@@ -3,6 +3,7 @@ import { Typography, Button, Form, message, Input } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import Dropzone from 'react-dropzone';
 import Axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -19,7 +20,9 @@ const CategoryOptions = [
   { value: 4, label: 'Pets & Animals' },
 ];
 
-function VideoUploadPage() {
+function VideoUploadPage(props) {
+  const user = useSelector((state) => state.user); // redux store에 있는 state.user에서 state를 가져옴
+
   const [VideoTitle, setVideoTitle] = useState('');
   const [Description, setDescription] = useState('');
   const [Private, setPrivate] = useState(0);
@@ -70,7 +73,32 @@ function VideoUploadPage() {
           }
         });
       } else {
-        alert('video upload failed ');
+        alert('videofile upload failed');
+      }
+    });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const variable = {
+      writer: user.userData._id,
+      title: VideoTitle,
+      description: Description,
+      privacy: Private,
+      filePath: FilePath,
+      category: Category,
+      duration: Duration,
+      thumbnail: ThumbnailPath,
+    };
+    Axios.post('/api/video/uploadvideo', variable).then((response) => {
+      if (response.data.success) {
+        message.success('upload success');
+        setTimeout(() => {
+          props.history.push('/');
+        }, 3000);
+      } else {
+        alert('video upload failed');
       }
     });
   };
@@ -81,7 +109,7 @@ function VideoUploadPage() {
         <Title level={2}>Upload Video</Title>
       </div>
 
-      <Form onSubmit>
+      <Form onSubmit={onSubmit}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           {/* Drop Zone */}
           <Dropzone
@@ -154,7 +182,7 @@ function VideoUploadPage() {
         <br />
         <br />
 
-        <Button type="primary" size="large" onClick>
+        <Button type="primary" size="large" onClick={onSubmit}>
           Upload
         </Button>
       </Form>
