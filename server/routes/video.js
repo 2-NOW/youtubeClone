@@ -101,4 +101,14 @@ router.post('/uploadvideo', (req, res) => {
   });
 });
 
+router.get('/getvideos', (req, res) => {
+  // video를 DB에서 가져와서 client에 보낸다. (Landing Page)
+  Video.find() // video collection 안에 있는 모든 정보를 가져옴.
+    .populate('writer') // populate를 안해주면 writer id값만 가져옴.
+    .exec((err, videos) => {
+      if (err) return res.status(400).send(err);
+      res.status(200).json({ success: true, videos });
+    });
+});
+
 module.exports = router;
