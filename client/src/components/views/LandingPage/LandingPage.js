@@ -31,8 +31,9 @@ function LandingPage() {
         {/* window가 minimum size 일 때 one column size가 25
     window가 midium size 일 때 one column size가 8
     window가 large size 일 때 one column size가 6 / total 4 column */}
-        <a href={`/video/post/${video._id}`}>
-          <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative' }}>
+          <a href={`/video/post/${video._id}`}>
+            {/* renderCards에 있는 video에 id 담김 */}
             <img
               style={{ width: '100%' }}
               src={`http://localhost:8080/${video.thumbnail}`}
@@ -42,8 +43,8 @@ function LandingPage() {
                 {minutes} : {seconds}
               </span>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
         <br />
         <Meta
           avatar={<Avatar src={video.writer.image} />} // user image
