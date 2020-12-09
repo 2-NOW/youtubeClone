@@ -11,7 +11,6 @@ function VideoDetailPage(props) {
     axios.post('/api/video/getvideodetail', videoVariable).then((response) => {
       if (response.data.success) {
         setVideoDetail(response.data.video);
-        console.log('useEffect');
       } else {
         alert('fail to load video data');
       }
@@ -28,13 +27,13 @@ function VideoDetailPage(props) {
               src={`http://localhost:8080/${VideoDetail.filePath}`}
               controls
             />
-            <List.item actions>
+            <List.Item actions>
               <List.Item.Meta
                 avatar={<Avatar src={VideoDetail.writer.image} />}
                 title={VideoDetail.writer.name}
                 description={VideoDetail.description}
               />
-            </List.item>
+            </List.Item>
             {/* Comments */}
           </div>
         </Col>
