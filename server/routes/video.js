@@ -111,4 +111,13 @@ router.get('/getvideos', (req, res) => {
     });
 });
 
+router.post('/getvideodetail', (req, res) => {
+  Video.findOne({ _id: req.body.videoId })
+    .populate('writer')
+    .exec((err, video) => {
+      if (err) return res.status(400).send(err);
+      return res.status(200).json({ success: true, video });
+    });
+});
+
 module.exports = router;

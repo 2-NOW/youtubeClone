@@ -32,10 +32,11 @@ function LandingPage() {
     window가 midium size 일 때 one column size가 8
     window가 large size 일 때 one column size가 6 / total 4 column */}
         <div style={{ position: 'relative' }}>
-          <a href={`/video/post/${video._id}`}>
+          <a href={`/video/${video._id}`}>
             {/* renderCards에 있는 video에 id 담김 */}
             <img
               style={{ width: '100%' }}
+              alt="thumbnail"
               src={`http://localhost:8080/${video.thumbnail}`}
             />
             <div className="duration">
