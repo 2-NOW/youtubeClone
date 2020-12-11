@@ -35,7 +35,7 @@ function SideVideo() {
             />
           </a>
         </div>
-        {/* right part : content */}
+        {/* right part : contents */}
         <div style={{ width: '50%' }}>
           <a href style={{ color: 'gray' }}>
             <span style={{ fontSize: '1rem', color: 'black' }}>
